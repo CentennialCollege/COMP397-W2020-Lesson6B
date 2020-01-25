@@ -1,7 +1,7 @@
 {
-  "name": "comp397-w2020-lesson2b",
+  "name": "comp397-w2020-lesson3b",
   "version": "1.0.0",
-  "description": "demo for Lesson 2B",
+  "description": "demo for Lesson 3B",
   "main": "game.js",
   "author": "Tom Tsiliopoulos",
   "license": "MIT",
