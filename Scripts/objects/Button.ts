@@ -1,26 +1,26 @@
 module objects 
 {
-    export class Button extends createjs.Bitmap
+    export class Button extends GameObject
     {
         // constructor
-        constructor(imagePath:string, x:number, y:number, isCentered:boolean)
+        constructor(imagePath:string, x:number = 0, y:number = 0, isCentered:boolean = true)
         {
-            super(imagePath);
-
-            if(isCentered)
-            {
-                this.regX  = 75;
-                this.regY = 25;
-            } 
-
-            this.x = x;
-            this.y = y;
+            super(imagePath, x, y, isCentered);
 
             this.on("mouseover", this.HoverOver);
             this.on("mouseout", this.HoverOut);
+
+            this.Start();
         }
 
-        // methods
+        // PRIVATE LIFE CYCLE METHODS
+        protected _checkBounds():void
+        {
+
+        }
+
+
+        // PUBLIC Methods
         HoverOver():void
         {
             this.alpha = 0.7;
@@ -30,5 +30,30 @@ module objects
         {
             this.alpha = 1.0;
         }
+
+        // PUBLIC LIFE CYCLE METHODS
+
+        /**
+         * Initialization happens here
+         *
+         * @memberof Button
+         */
+        public Start():void
+        {
+
+        }
+
+        public Update():void
+        {
+
+        }
+
+        public Reset():void
+        {
+
+        }
+
+
+
     }
 }

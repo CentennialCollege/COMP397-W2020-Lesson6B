@@ -3,9 +3,9 @@
 let game = (function(){
     let canvas:HTMLCanvasElement = document.getElementsByTagName('canvas')[0];
     let stage:createjs.Stage;
-    let helloLabel:objects.Label;
-    let goodByeLabel:objects.Label;
-    let clickMeButton:objects.Button;
+    let startLabel:objects.Label;
+    let startButton:objects.Button;
+    let player:objects.Player;
 
     /**
      * Perform Initialization in the Start function
@@ -27,7 +27,17 @@ let game = (function(){
      */
     function Update():void
     {
-        helloLabel.rotation += 5;
+        player.Update();
+
+        let sqrDistance = objects.Vector2.sqrDistance(player.position, startButton.position);
+        let radii = player.halfWidth + startButton.halfWidth
+
+        if(sqrDistance < (radii * radii))
+        {
+            console.log("Collision!");
+        }
+
+
         stage.update();
     }
 
@@ -39,18 +49,21 @@ let game = (function(){
     {
         console.log(`%c Main Started`, "color: green; font-size:16px;");
 
-        helloLabel = new objects.Label("Hello World", "40px","Consolas", "#000000", 320, 240, true);
-        stage.addChild(helloLabel);
+        startLabel = new objects.Label("The Game", "80px","Consolas", "#000000", 320, 200, true);
+        stage.addChild(startLabel);
 
-        goodByeLabel = new objects.Label("Good Bye!", "30px", "Arial", "#FF0000", 320, 300, true);
-        stage.addChild(goodByeLabel);
+       
 
-        clickMeButton = new objects.Button("./Assets/images/clickMeButton.png", 320, 400, true);
-        stage.addChild(clickMeButton);
+        startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+        stage.addChild(startButton);
 
-        clickMeButton.on("click", function() {
-            helloLabel.text = "Clicked!";
+        startButton.on("click", function() {
+           console.log("Start Clicked!");
         });
+
+        player = new objects.Player();
+        stage.addChild(player);
+
     }
 
     window.addEventListener("load", Start);

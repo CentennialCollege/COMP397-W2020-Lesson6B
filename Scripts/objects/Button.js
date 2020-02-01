@@ -18,26 +18,39 @@ var objects;
         __extends(Button, _super);
         // constructor
         function Button(imagePath, x, y, isCentered) {
-            var _this = _super.call(this, imagePath) || this;
-            if (isCentered) {
-                _this.regX = 75;
-                _this.regY = 25;
-            }
-            _this.x = x;
-            _this.y = y;
+            if (x === void 0) { x = 0; }
+            if (y === void 0) { y = 0; }
+            if (isCentered === void 0) { isCentered = true; }
+            var _this = _super.call(this, imagePath, x, y, isCentered) || this;
             _this.on("mouseover", _this.HoverOver);
             _this.on("mouseout", _this.HoverOut);
+            _this.Start();
             return _this;
         }
-        // methods
+        // PRIVATE LIFE CYCLE METHODS
+        Button.prototype._checkBounds = function () {
+        };
+        // PUBLIC Methods
         Button.prototype.HoverOver = function () {
             this.alpha = 0.7;
         };
         Button.prototype.HoverOut = function () {
             this.alpha = 1.0;
         };
+        // PUBLIC LIFE CYCLE METHODS
+        /**
+         * Initialization happens here
+         *
+         * @memberof Button
+         */
+        Button.prototype.Start = function () {
+        };
+        Button.prototype.Update = function () {
+        };
+        Button.prototype.Reset = function () {
+        };
         return Button;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Button = Button;
 })(objects || (objects = {}));
 //# sourceMappingURL=Button.js.map

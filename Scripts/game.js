@@ -4,9 +4,9 @@
 var game = (function () {
     var canvas = document.getElementsByTagName('canvas')[0];
     var stage;
-    var helloLabel;
-    var goodByeLabel;
-    var clickMeButton;
+    var startLabel;
+    var startButton;
+    var player;
     /**
      * Perform Initialization in the Start function
      *
@@ -24,7 +24,12 @@ var game = (function () {
      * This function 'triggers' every frame
      */
     function Update() {
-        helloLabel.rotation += 5;
+        player.Update();
+        var sqrDistance = objects.Vector2.sqrDistance(player.position, startButton.position);
+        var radii = player.halfWidth + startButton.halfWidth;
+        if (sqrDistance < (radii * radii)) {
+            console.log("Collision!");
+        }
         stage.update();
     }
     /**
@@ -33,15 +38,15 @@ var game = (function () {
      */
     function Main() {
         console.log("%c Main Started", "color: green; font-size:16px;");
-        helloLabel = new objects.Label("Hello World", "40px", "Consolas", "#000000", 320, 240, true);
-        stage.addChild(helloLabel);
-        goodByeLabel = new objects.Label("Good Bye!", "30px", "Arial", "#FF0000", 320, 300, true);
-        stage.addChild(goodByeLabel);
-        clickMeButton = new objects.Button("./Assets/images/clickMeButton.png", 320, 400, true);
-        stage.addChild(clickMeButton);
-        clickMeButton.on("click", function () {
-            helloLabel.text = "Clicked!";
+        startLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 200, true);
+        stage.addChild(startLabel);
+        startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+        stage.addChild(startButton);
+        startButton.on("click", function () {
+            console.log("Start Clicked!");
         });
+        player = new objects.Player();
+        stage.addChild(player);
     }
     window.addEventListener("load", Start);
 })();
