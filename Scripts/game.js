@@ -25,11 +25,8 @@ var game = (function () {
      */
     function Update() {
         player.Update();
-        var sqrDistance = objects.Vector2.sqrDistance(player.position, startButton.position);
-        var radii = player.halfWidth + startButton.halfWidth;
-        if (sqrDistance < (radii * radii)) {
-            console.log("Collision!");
-        }
+        //managers.Collision.squaredRadiusCheck(player, startButton);
+        managers.Collision.AABBCheck(player, startButton);
         stage.update();
     }
     /**

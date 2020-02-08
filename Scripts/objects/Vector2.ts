@@ -169,5 +169,12 @@ module objects
             let Ys = (P2.y - P1.y);
             return  Xs * Xs + Ys * Ys;
         }
+
+        public static subtract(lhs:Vector2, rhs:Vector2):Vector2
+        {
+            let dx = lhs.x - rhs.x;
+            let dy = lhs.y - rhs.y;
+            return new Vector2(dx, dy);
+        }
     }
 }
