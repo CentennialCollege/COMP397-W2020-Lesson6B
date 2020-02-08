@@ -4,8 +4,8 @@ let game = (function(){
     let canvas:HTMLCanvasElement = document.getElementsByTagName('canvas')[0];
     let stage:createjs.Stage;
 
-    let startScene:scenes.Start;
-   
+    let currentSceneState: scenes.State;
+    let currentScene: objects.Scene;   
 
     /**
      * Perform Initialization in the Start function
@@ -15,12 +15,13 @@ let game = (function(){
     {
         console.log(`%c Game Started`, "color: blue; font-size:20px;");
         stage = new createjs.Stage(canvas);
-        stage.name = "Main Stage";
         config.Game.STAGE = stage; // create a reference to the Global Stage
         createjs.Ticker.framerate = 60; // declare the framerate as 60FPS
         createjs.Ticker.on('tick', Update);
         stage.enableMouseOver(20);
-        Main();
+
+        currentSceneState = scenes.State.NO_SCENE;
+        config.Game.SCENE_STATE = scenes.State.START;
     }
 
     /**
@@ -29,7 +30,12 @@ let game = (function(){
      */
     function Update():void
     {
-        startScene.Update();
+        if(currentSceneState != config.Game.SCENE_STATE)
+        {
+            Main();
+        }
+
+        currentScene.Update();
 
         stage.update();
     }
@@ -40,10 +46,34 @@ let game = (function(){
      */
     function Main():void
     {
-        console.log(`%c Main Started`, "color: green; font-size:16px;");
+        console.log(`%c Switching Scenes`, "color: green; font-size:16px;");
 
-        startScene = new scenes.Start();
-        stage.addChild(startScene);
+        // cleanup
+        if(currentSceneState != scenes.State.NO_SCENE)
+        {
+            currentScene.removeAllChildren();
+            stage.removeAllChildren();
+        }
+
+        // state machine
+        switch(config.Game.SCENE_STATE)
+        {
+            case scenes.State.START:
+                currentScene = new scenes.Start();
+                break;
+            case scenes.State.PLAY:
+                currentScene = new scenes.Play();
+                break;
+            case scenes.State.END:
+                currentScene = new scenes.End();
+                break;
+
+        }
+
+        // add the scene to the stage and setup the current scene
+        stage.addChild(currentScene);
+        currentSceneState = config.Game.SCENE_STATE;
+
 
     }
 

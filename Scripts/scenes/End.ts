@@ -1,10 +1,10 @@
 module scenes
 {
-    export class Start extends objects.Scene
+    export class End extends objects.Scene
     {
         // PRIVATE INSTANCE MEMBERS
-        startLabel:objects.Label;
-        startButton:objects.Button;
+        endLabel:objects.Label;
+        nextButton:objects.Button;
 
         // PUBLIC PROPERTIES
 
@@ -14,8 +14,8 @@ module scenes
             super();
 
             // initialization
-            this.startLabel = new objects.Label();
-            this.startButton = new objects.Button();
+            this.endLabel = new objects.Label();
+            this.nextButton = new objects.Button();
 
             this.Start();
         }
@@ -24,8 +24,8 @@ module scenes
 
         public Start(): void 
         {
-            this.startLabel = new objects.Label("The Game", "80px","Consolas", "#000000", 320, 200, true);
-            this.startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+            this.endLabel = new objects.Label("End Scene", "80px","Consolas", "#000000", 320, 200, true);
+            this.nextButton = new objects.Button("./Assets/images/backButton.png", 320, 400, true);
            
             this.Main();
         }        
@@ -37,11 +37,11 @@ module scenes
         
         public Main(): void {
             
-            this.addChild(this.startLabel);
+            this.addChild(this.endLabel);
     
-            this.addChild(this.startButton);
+            this.addChild(this.nextButton);
     
-            this.startButton.on("click", function() {
+            this.nextButton.on("click", function() {
                config.Game.SCENE_STATE = scenes.State.PLAY;
             });
         }
