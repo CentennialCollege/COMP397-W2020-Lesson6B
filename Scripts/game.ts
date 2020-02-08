@@ -3,9 +3,9 @@
 let game = (function(){
     let canvas:HTMLCanvasElement = document.getElementsByTagName('canvas')[0];
     let stage:createjs.Stage;
-    let startLabel:objects.Label;
-    let startButton:objects.Button;
-    let player:objects.Player;
+
+    let startScene:scenes.Start;
+   
 
     /**
      * Perform Initialization in the Start function
@@ -15,6 +15,7 @@ let game = (function(){
     {
         console.log(`%c Game Started`, "color: blue; font-size:20px;");
         stage = new createjs.Stage(canvas);
+        config.Game.STAGE = stage; // create a reference to the Global Stage
         createjs.Ticker.framerate = 60; // declare the framerate as 60FPS
         createjs.Ticker.on('tick', Update);
         stage.enableMouseOver(20);
@@ -27,12 +28,8 @@ let game = (function(){
      */
     function Update():void
     {
-        player.Update();
-
-       //managers.Collision.squaredRadiusCheck(player, startButton);
-
-       managers.Collision.AABBCheck(player, startButton);
-
+        
+        startScene.Update();
 
         stage.update();
     }
@@ -45,20 +42,8 @@ let game = (function(){
     {
         console.log(`%c Main Started`, "color: green; font-size:16px;");
 
-        startLabel = new objects.Label("The Game", "80px","Consolas", "#000000", 320, 200, true);
-        stage.addChild(startLabel);
-
-       
-
-        startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
-        stage.addChild(startButton);
-
-        startButton.on("click", function() {
-           console.log("Start Clicked!");
-        });
-
-        player = new objects.Player();
-        stage.addChild(player);
+        startScene = new scenes.Start();
+        stage.addChild(startScene);
 
     }
 

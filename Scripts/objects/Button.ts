@@ -3,7 +3,9 @@ module objects
     export class Button extends GameObject
     {
         // constructor
-        constructor(imagePath:string, x:number = 0, y:number = 0, isCentered:boolean = true)
+        constructor(
+            imagePath:string = "./Assets/images/placeholder.png", 
+            x:number = 0, y:number = 0, isCentered:boolean = true)
         {
             super(imagePath, x, y, isCentered);
 
