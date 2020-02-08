@@ -18,6 +18,8 @@ module scenes
             this.startLabel = new objects.Label();
             this.startButton = new objects.Button();
             this.player = new objects.Player();
+
+            this.Start();
         }
 
         // PUBLIC METHODS
@@ -26,6 +28,8 @@ module scenes
         {
             this.startLabel = new objects.Label("The Game", "80px","Consolas", "#000000", 320, 200, true);
             this.startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+            this.player = new objects.Player();
+           
             this.Main();
         }        
         
@@ -47,7 +51,7 @@ module scenes
                console.log("Start Clicked!");
             });
     
-            this.player = new objects.Player();
+            
             this.addChild(this.player);
         }
 

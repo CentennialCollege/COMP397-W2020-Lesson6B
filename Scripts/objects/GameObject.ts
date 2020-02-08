@@ -112,7 +112,7 @@ module objects
             super(imagePath);
             this.isColliding = false;
 
-            this.position = new Vector2(x, y);
+            //this.position = new Vector2(x, y);
 
             // wait for the  image to load before calculating its width and height
             this.image.addEventListener('load', ()=>{

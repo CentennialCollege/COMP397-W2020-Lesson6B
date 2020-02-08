@@ -15,6 +15,7 @@ let game = (function(){
     {
         console.log(`%c Game Started`, "color: blue; font-size:20px;");
         stage = new createjs.Stage(canvas);
+        stage.name = "Main Stage";
         config.Game.STAGE = stage; // create a reference to the Global Stage
         createjs.Ticker.framerate = 60; // declare the framerate as 60FPS
         createjs.Ticker.on('tick', Update);
@@ -28,7 +29,6 @@ let game = (function(){
      */
     function Update():void
     {
-        
         startScene.Update();
 
         stage.update();

@@ -25,7 +25,10 @@ module objects
         }
 
         public Update(): void {
-           this.position = new Vector2(config.Game.STAGE.mouseX, config.Game.STAGE.mouseY);
+            let mouseX = config.Game.STAGE.mouseX;
+            let mouseY = config.Game.STAGE.mouseY;
+
+           this.position = new Vector2(mouseX, mouseY);
         }
 
         public Reset(): void {

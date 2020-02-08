@@ -40,7 +40,7 @@ var objects;
             _this._isCentered = false;
             _this._position = new objects.Vector2(0, 0);
             _this.isColliding = false;
-            _this.position = new objects.Vector2(x, y);
+            //this.position = new Vector2(x, y);
             // wait for the  image to load before calculating its width and height
             _this.image.addEventListener('load', function () {
                 _this.width = _this.getBounds().width;

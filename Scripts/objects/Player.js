@@ -31,7 +31,9 @@ var objects;
         Player.prototype.Start = function () {
         };
         Player.prototype.Update = function () {
-            this.position = new objects.Vector2(config.Game.STAGE.mouseX, config.Game.STAGE.mouseY);
+            var mouseX = config.Game.STAGE.mouseX;
+            var mouseY = config.Game.STAGE.mouseY;
+            this.position = new objects.Vector2(mouseX, mouseY);
         };
         Player.prototype.Reset = function () {
         };

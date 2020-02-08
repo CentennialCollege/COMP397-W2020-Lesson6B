@@ -24,12 +24,14 @@ var scenes;
             _this.startLabel = new objects.Label();
             _this.startButton = new objects.Button();
             _this.player = new objects.Player();
+            _this.Start();
             return _this;
         }
         // PUBLIC METHODS
         Start.prototype.Start = function () {
             this.startLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 200, true);
             this.startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+            this.player = new objects.Player();
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -43,7 +45,6 @@ var scenes;
             this.startButton.on("click", function () {
                 console.log("Start Clicked!");
             });
-            this.player = new objects.Player();
             this.addChild(this.player);
         };
         return Start;

@@ -6,7 +6,7 @@ module objects
         {
             super();
 
-            this.Start();
+            //this.Start();
         }
 
         // Life Cycle Functions
