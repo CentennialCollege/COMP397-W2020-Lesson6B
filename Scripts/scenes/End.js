@@ -29,7 +29,7 @@ var scenes;
         // PUBLIC METHODS
         End.prototype.Start = function () {
             this.endLabel = new objects.Label("End Scene", "80px", "Consolas", "#000000", 320, 200, true);
-            this.nextButton = new objects.Button("./Assets/images/backButton.png", 320, 400, true);
+            this.nextButton = new objects.Button("/Assets/images/backButton.png", 320, 400, true);
             this.Main();
         };
         End.prototype.Update = function () {

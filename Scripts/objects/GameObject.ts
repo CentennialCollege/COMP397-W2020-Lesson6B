@@ -117,7 +117,7 @@ module objects
          * @param {boolean} [centered=false]
          * @memberof GameObject
          */
-        constructor(imagePath:string = "./Assets/images/placeholder.png",
+        constructor(imagePath:string = "/Assets/images/placeholder.png",
                     x:number = 0, y:number = 0, centered:boolean = false)
         {
             super(imagePath);
