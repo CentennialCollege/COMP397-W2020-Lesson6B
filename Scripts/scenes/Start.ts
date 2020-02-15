@@ -27,7 +27,7 @@ module scenes
         public Start(): void 
         {
             this._startLabel = new objects.Label("The Game", "80px","Consolas", "#FFFF00", 320, 200, true);
-            this._startButton = new objects.Button("/Assets/images/startButton.png", 320, 400, true);
+            this._startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
             this._ocean = new objects.Ocean();
            
             this.Main();
