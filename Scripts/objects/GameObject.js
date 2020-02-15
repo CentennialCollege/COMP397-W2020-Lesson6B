@@ -42,13 +42,11 @@ var objects;
             _this._velocity = new objects.Vector2(0, 0);
             _this.isColliding = false;
             // wait for the  image to load before calculating its width and height
-            _this.image.addEventListener('load', function () {
-                _this.width = _this.getBounds().width;
-                _this.height = _this.getBounds().height;
-                _this.halfWidth = _this.width * 0.5;
-                _this.halfHeight = _this.height * 0.5;
-                _this.isCentered = centered;
-            });
+            _this.width = _this.getBounds().width;
+            _this.height = _this.getBounds().height;
+            _this.halfWidth = _this.width * 0.5;
+            _this.halfHeight = _this.height * 0.5;
+            _this.isCentered = centered;
             // set the GameObject's position
             _this.position = new objects.Vector2(x, y);
             return _this;
