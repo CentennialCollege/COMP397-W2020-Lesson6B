@@ -4,7 +4,7 @@ module objects
     {
         // constructor
         constructor(
-            imagePath:string = "./Assets/images/placeholder.png", 
+            imagePath:Object = config.Game.ASSETS.getResult("placeholder"), 
             x:number = 0, y:number = 0, isCentered:boolean = true)
         {
             super(imagePath, x, y, isCentered);

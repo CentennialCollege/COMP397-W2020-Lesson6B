@@ -26,7 +26,7 @@ var objects;
          * @memberof GameObject
          */
         function GameObject(imagePath, x, y, centered) {
-            if (imagePath === void 0) { imagePath = "./Assets/images/placeholder.png"; }
+            if (imagePath === void 0) { imagePath = config.Game.ASSETS.getResult("placeholder"); }
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (centered === void 0) { centered = false; }
@@ -41,7 +41,6 @@ var objects;
             _this._position = new objects.Vector2(0, 0);
             _this._velocity = new objects.Vector2(0, 0);
             _this.isColliding = false;
-            //this.position = new Vector2(x, y);
             // wait for the  image to load before calculating its width and height
             _this.image.addEventListener('load', function () {
                 _this.width = _this.getBounds().width;

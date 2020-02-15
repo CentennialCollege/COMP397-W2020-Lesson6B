@@ -9,7 +9,7 @@ module objects
         // CONSTRUCTOR
         constructor()
         {
-            super("./Assets/images/placeholder.png", 0, 0, true);
+            super(config.Game.ASSETS.getResult("placeholder"), 0, 0, true);
 
             this.Start();
         }
