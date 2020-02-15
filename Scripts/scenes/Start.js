@@ -21,23 +21,27 @@ var scenes;
         function Start() {
             var _this = _super.call(this) || this;
             // initialization
-            _this.startLabel = new objects.Label();
-            _this.startButton = new objects.Button();
+            _this._startLabel = new objects.Label();
+            _this._startButton = new objects.Button();
+            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }
         // PUBLIC METHODS
         Start.prototype.Start = function () {
-            this.startLabel = new objects.Label("The Game", "80px", "Consolas", "#000000", 320, 200, true);
-            this.startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+            this._startLabel = new objects.Label("The Game", "80px", "Consolas", "#FFFF00", 320, 200, true);
+            this._startButton = new objects.Button("./Assets/images/startButton.png", 320, 400, true);
+            this._ocean = new objects.Ocean();
             this.Main();
         };
         Start.prototype.Update = function () {
+            this._ocean.Update();
         };
         Start.prototype.Main = function () {
-            this.addChild(this.startLabel);
-            this.addChild(this.startButton);
-            this.startButton.on("click", function () {
+            this.addChild(this._ocean);
+            this.addChild(this._startLabel);
+            this.addChild(this._startButton);
+            this._startButton.on("click", function () {
                 config.Game.SCENE_STATE = scenes.State.PLAY;
             });
         };

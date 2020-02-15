@@ -24,7 +24,7 @@ module scenes
 
         public Start(): void 
         {
-            this.playLabel = new objects.Label("Place Scene", "80px","Consolas", "#000000", 320, 200, true);
+            this.playLabel = new objects.Label("Play Scene", "80px","Consolas", "#000000", 320, 200, true);
             this.nextButton = new objects.Button("./Assets/images/nextButton.png", 320, 400, true);
            
             this.Main();
